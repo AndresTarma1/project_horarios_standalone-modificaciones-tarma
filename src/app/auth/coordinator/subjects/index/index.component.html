@@ -1,0 +1,118 @@
+<div class="container-fluid mt-4">
+  <div class="bg-white p-4 shadow-sm rounded">
+    <h2 class="text-center text-uppercase">Asignaturas</h2>
+    <p class="text-center text-muted">
+      En esta página puedes buscar asignaturas, ver a qué profesores y cargas académicas están asignadas,
+      y editar sus detalles de manera sencilla.
+    </p>
+
+    <hr class="my-2 custom-gradient" />
+
+    <!-- Buscar asignatura -->
+    <div class="form-group">
+      <label class="form-label" for="filter-search">Buscar por nombre</label>
+      <div class="input-group">
+        <input [(ngModel)]="filterInput" class="form-control" type="text" placeholder="Ejemplo: Inglés II" />
+        <button class="btn btn-outline-primary" (click)="filtrarAsignaturas()">Buscar</button>
+      </div>
+    </div>
+
+    <!-- Listado de asignaturas -->
+    <div class="row my-4 asignaturas-container">
+      @if (asignaturas$ | async; as asignaturasInfo) {
+        @if (asignaturasInfo.subjects) {
+          <p class="text-muted">
+            Haz clic en el botón de una asignatura para ver más información sobre a quién está asignada o editar sus detalles.
+          </p>
+          @for (asignatura of asignaturasInfo.subjects | paginate : { itemsPerPage: 6, currentPage: p, totalItems: total(asignaturasInfo) }; track $index) {
+            <div class="col-12 col-md-6 col-lg-4 mb-3">
+              <div class="btn-group h-100 w-100" role="group" aria-label="asignatura actions">
+                <button [ngClass]="{'active' : botonSeleccionado === asignatura.id}"
+                        (click)="buscarInformacionAsignatura(asignatura.id)"
+                        class="btn btn-outline-secondary w-100">
+                  {{ asignatura.name | titlecase }}
+                </button>
+                <button (click)="openModalEdit(asignatura)" class="btn btn-outline-secondary">
+                  <i class="bi bi-pen"></i>
+                </button>
+              </div>
+            </div>
+          }
+
+          <!-- Paginación -->
+          <div class="align-items-end">
+            <pagination-controls
+              class="text-center ngx-pagination-v1"
+              nextLabel="Siguiente"
+              previousLabel="Anterior"
+              (pageChange)="p = $event">
+            </pagination-controls>
+          </div>
+        } @else {
+          <h3>No hay asignaturas disponibles</h3>
+        }
+      } @else {
+        <div class="d-flex align-items-center">
+          <strong>Cargando asignaturas...</strong>
+          <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+        </div>
+      }
+    </div>
+
+    <hr class="my-2 custom-gradient" />
+
+    <!-- Información adicional -->
+    <div class="bg-white p-4 shadow-sm rounded">
+      <div class="row">
+        @if (asignaturasPertenecientes$ | async; as asignaturasPertenecientesInfo) {
+          <h4 class="text-center">Profesores y Cargas Académicas relacionadas</h4>
+          <p class="text-muted text-center">
+            Aquí puedes ver los profesores que enseñan la asignatura seleccionada y las cargas académicas donde está incluida.
+          </p>
+          <!-- Profesores -->
+          <div class="col-md-6">
+            <div class="container">
+              <h5>Profesores</h5>
+              <p class="text-muted">Lista de profesores que tienen asignada esta asignatura.</p>
+              <ul class="list-group">
+                @for (profesor of asignaturasPertenecientesInfo.teachers; track $index) {
+                  <li class="list-group-item">{{ profesor.name }}</li>
+                } @empty {
+                  <li class="list-group-item">No hay profesores que den esta asignatura.</li>
+                }
+              </ul>
+            </div>
+          </div>
+
+          <!-- Cargas Académicas -->
+          <div class="col-md-6">
+            <div class="container">
+              <h5>Cargas Académicas</h5>
+              <p class="text-muted">Lista de cargas académicas en las que está incluida esta asignatura.</p>
+              <ul class="list-group">
+                @for (cargaAcademica of asignaturasPertenecientesInfo.cargas; track $index) {
+                  <li class="list-group-item">
+                    {{ cargaAcademica.name }} <br>
+                  </li>
+                } @empty {
+                  <li class="list-group-item">Ninguna carga académica contiene esta asignatura.</li>
+                }
+              </ul>
+            </div>
+          </div>
+        } @else {
+          <div>
+            @if (botonSeleccionado != null) {
+              <div class="d-flex align-items-center">
+                <strong>Buscando información de la asignatura...</strong>
+                <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+              </div>
+            } @else {
+              <h4 class="text-center">Seleccione una asignatura.</h4>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

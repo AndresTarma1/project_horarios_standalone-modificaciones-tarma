@@ -1,0 +1,91 @@
+<div class="container mt-5">
+  <div class="row bg-white p-4 shadow-sm rounded">
+    <h2 class="text-center text-secondary mb-4"><strong>Gestión de Carrera Académica</strong></h2>
+
+    <hr class="my-2">
+    <!-- Formulario de Registrar Carrera -->
+    <div class="col-12 col-xl-6 mb-4">
+      <div class="p-3 rounded">
+        <h3 class="mb-3">Registrar Carrera</h3>
+        <form (ngSubmit)="crearCarrera()" [formGroup]="carreraForm">
+          <div class="mb-3">
+            <label for="name" class="form-label">Nombre de la carrera</label>
+            <input
+              type="text"
+              formControlName="name"
+              id="name"
+              class="form-control"
+              placeholder="Ejemplo: Ingeniería de Sistemas"
+              required>
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Descripción</label>
+            <textarea
+              formControlName="description"
+              id="description"
+              class="form-control"
+              rows="3"
+              placeholder="Añade una breve descripción de la carrera"
+              required>
+            </textarea>
+          </div>
+          <button
+            type="submit"
+            class="btn btn-outline-primary w-100"
+            [disabled]="carreraForm.invalid">
+            Crear carrera
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Formulario de Agregar Carga Académica -->
+    <div class="col-12 col-xl-6 mb-4">
+      <div class="p-3  rounded">
+        <h3 class="mb-3">Agregar Carga Académica</h3>
+        <form (ngSubmit)="agregarCargaAcademica()" [formGroup]="cargaAcademicaForm">
+          <div class="mb-3">
+            <label for="cargaName" class="form-label">Nombre de la carga académica</label>
+            <div class="input-group">
+              <input
+                type="text"
+                formControlName="name"
+                id="cargaName"
+                class="form-control"
+                placeholder="Ejemplo: Primer Semestre"
+                required>
+              <button
+                class="btn btn-outline-secondary"
+                type="submit"
+                [disabled]="cargaAcademicaForm.invalid">
+                <i class="bi bi-plus-circle"></i> Añadir
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <!-- Lista de Cargas Académicas -->
+        <div class="mt-4">
+          <h4>Cargas Académicas Agregadas</h4>
+          <ul class="list-group">
+            <li
+              *ngFor="let carga of carreraForm.get('cargasAcademicas')?.value; let i = index"
+              class="list-group-item d-flex justify-content-between align-items-center">
+              {{ carga.name }}
+              <button
+                (click)="eliminarCargaAcademica(i)"
+                class="btn btn-outline-danger btn-sm">
+                <i class="bi bi-trash"></i>
+              </button>
+            </li>
+          </ul>
+          <p
+            *ngIf="carreraForm.get('cargasAcademicas')?.value.length === 0"
+            class="text-muted mt-2 text-start">
+            No has agregado cargas académicas aún.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

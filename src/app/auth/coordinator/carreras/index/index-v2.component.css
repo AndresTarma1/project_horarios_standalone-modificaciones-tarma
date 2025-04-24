@@ -1,0 +1,16 @@
+.form-group .input-group {
+  position: relative;
+}
+
+.form-group .search-icon {
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #999;
+}
+
+*{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}

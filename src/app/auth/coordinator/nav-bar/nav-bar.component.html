@@ -1,0 +1,81 @@
+<div class="container_">
+  <div class="sidebar" [ngClass]="{ active: isSidebarActive }" id="sidebarMenu">
+    <div class="sidebar-header justify-content-center">
+      <img class="img-fluid mx-auto rounded-circle" width="60px" height="60" src="/assets/placeholders/image.png" alt="Profile Image" />
+      <h5>{{ coordinador.name }}</h5>
+      <p>Coordinador</p>
+    </div>
+    <ul class="nav flex-column p-3">
+      <li class="nav-item">
+        <a routerLink="dashboard" class="nav-link">
+          <i class="bi bi-house-door-fill"></i>
+          Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="profile" class="nav-link">
+          <i class="bi bi-person-circle"></i>
+          Perfil
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="#horarioSubmenu" class="nav-link" data-bs-toggle="collapse">
+          <i class="bi bi-calendar-check-fill"></i>
+          Horario
+        </a>
+        <div class="collapse submenu" id="horarioSubmenu">
+          <a routerLink="horario/create" class="nav-link"> Crear Horario </a>
+          <a routerLink="horario/index" class="nav-link"> Ver Horario </a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a routerLink="groups" class="nav-link">
+          <i class="bi bi-person-circle"></i>
+          Grupos
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="#cargasSubmenu" class="nav-link" data-bs-toggle="collapse">
+          <i class="bi bi-folder-fill"></i>
+          Carreras
+        </a>
+        <div class="collapse submenu" id="cargasSubmenu">
+          <a routerLink="carreras/create" class="nav-link">Crear Carreras</a>
+          <a routerLink="carreras/index" class="nav-link">Ver Carreras</a>
+        </div>
+      </li>
+
+      <li class="nav-item">
+        <a href="#asignaturasSubmenu" class="nav-link" data-bs-toggle="collapse">
+          <i class="bi bi-calendar-check-fill"></i>
+          Asignaturas
+        </a>
+        <div class="collapse submenu" id="asignaturasSubmenu">
+          <a routerLink="subjects" class="nav-link">Ver Asignaturas</a>
+          <a routerLink="subject/teacher" class="nav-link">Control Profesores</a>
+        </div>
+      </li>
+      <li class="nav-item logout-item">
+        <a style="cursor: pointer;" (click)="logout()" class="nav-link">
+          <i class="bi bi-box-arrow-right"></i>
+          Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <button
+    [class.menu-inactivo]="!isSidebarActive"
+    class="toggle-btn"
+    (click)="toggleSidebar()"
+  >
+    ☰
+  </button>
+
+  <section [class.margin-content]="isSidebarActive" class="bg-body-secondary overflow-auto section-main">
+    <router-outlet></router-outlet>
+  </section>
+</div>

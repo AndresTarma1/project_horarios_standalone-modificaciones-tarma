@@ -1,0 +1,18 @@
+<!-- Modal Body -->
+<div class="modal-header">
+  <h5 class="modal-title" id="modal-title">Editar Carga Académica</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+</div>
+
+<div class="modal-body">
+  <div class="form-group">
+    <label for="cargaName">Nombre de la Carga Académica</label>
+    <input type="text" class="form-control" id="cargaName" [(ngModel)]="cargaAcademica.name" placeholder="Nombre de la carga académica" />
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="closeModal()">Cerrar</button>
+  <button type="button" class="btn btn-outline-primary" (click)="saveChanges()">Guardar</button>
+  <button type="button" class="btn btn-outline-danger" (click)="deleteCarga()">Eliminar</button>
+</div>

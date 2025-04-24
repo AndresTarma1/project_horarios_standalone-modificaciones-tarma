@@ -1,0 +1,26 @@
+<div class="modal-header">
+  <h4 class="modal-title">Editar a {{ typeUser | titlecase }}</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
+<form (ngSubmit)="onSubmit()" [formGroup]="formulario">
+  <div class="modal-body">
+      @for (campo of campos; track $index) {
+
+        @if (campo.field == 'id') {
+          <label class="form-label mt-auto" [for]="campo.field">{{ campo.header }}</label>
+          <input formControlName="id" [id]="campo.field" class="form-control" type="text">
+        }@else {
+          <label class="form-label mt-auto" [for]="campo.field">{{ campo.header }}</label>
+          <input [formControlName]="campo.field" [id]="campo.field" class="form-control" type="text">
+        }
+      }
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" (click)="activeModal.close()" class="btn btn-secondary">Cancelar</button>
+    @if (grupo) {
+      <button type="button" (click)="borrarGrupo()" class="btn btn-danger">Eliminar</button>
+    }
+    <button type="submit"  class="btn btn-primary">Guardar</button>
+  </div>
+</form>

@@ -1,0 +1,124 @@
+<div class="container-fluid ">
+
+  <div class="bg-white rounded mt-4 px-3 py-3">
+
+    <br>
+  
+    <h2 class="text-center  text-uppercase">Carreras Academicas</h2>
+  
+    <hr class="my-2">
+  
+    <div class="container-fluid  rounded">
+  
+        <div class="row my-4 carrers-container">
+  
+          @if (carreras$ | async; as carrerasInfo) {
+            @if (carrerasInfo.data) {
+              @for (carrera of carrerasInfo.data; track $index) {
+                <div class="col-12 col-md-6 mb-4">
+                  <div class="btn-group w-100" role="group" aria-label="Carrera actions">
+  
+                    <!-- Botón de Selección de carrera -->
+                    <button
+                      [ngClass]="{'active': carrera.id === selectedCarrera.id}"
+                      (click)="carreraSeleccionada(carrera)"
+                      class="btn btn-outline-secondary w-100 py-2">
+                      {{ carrera.name | titlecase }}
+                    </button>
+  
+                    <!-- Botón de Eliminar carrera -->
+                    <button (click)="editarCarrera(carrera)"
+                      class="btn btn-outline-secondary">
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
+  
+                  </div>
+                </div>
+              }@empty {
+                <div class="h4">No hay carreras disponibles. </div>
+  
+              }
+            }
+          }@else {
+            <div class="d-flex align-items-center">
+              <strong>Cargando carreras...</strong>
+              <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+            </div>
+          }
+        </div>
+  
+        <hr class="my-3">
+  
+        <div class="section-secundary  pb-5">
+          @if (selectedCarrera.id) {
+            <div class="row">
+              <div class="col-8">
+                  <div class="h4">{{ selectedCarrera.name | titlecase }} </div>
+                  <p>Cargas académicas de la carrera {{ selectedCarrera.name }}</p>
+              </div>
+              <div class="col-4 d-flex align-items-center justify-content-end">
+                  <button (click)="openAddCargaAcademica()" class="btn btn-outline-secondary btn-sm w-100 w-md-auto">Añadir carga académica</button>
+              </div>
+          </div>
+  
+          @if (cargasAcademicas$ | async; as cargasAcademicasInfo) {
+            @for (cargaAcademica of cargasAcademicasInfo.cargas; track $index) {
+                <div ngbAccordion [closeOthers]="true">
+                    <div ngbAccordionItem>
+                        <h2 ngbAccordionHeader >
+                            <div class="d-flex justify-content-between w-100">
+                                <button ngbAccordionButton class="btn btn-outline-secondary">{{ cargaAcademica.name }}</button>
+                                <button (click)="editarCargaAcademica(cargaAcademica)" class="btn btn-outline-secondary btn-sm">
+                                  <i class="bi bi-pencil-square"></i>
+                                </button>
+                            </div>
+                        </h2>
+                        <div ngbAccordionCollapse>
+                            <div ngbAccordionBody>
+                                <ng-template>
+                                    <!-- Botón para añadir asignatura -->
+                                    <button (click)="openModalAsignatura(cargaAcademica)" class="btn btn-outline-primary mb-3">
+                                        <i class="bi bi-plus"></i> Añadir Asignatura
+                                    </button>
+  
+                                    <ul class="list-group list-group-flush">
+                                        @if (cargaAcademica.asignaturas) {
+                                            @for (asignatura of cargaAcademica.asignaturas; track $index) {
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    {{ asignatura.name }}
+  
+                                                    <!-- Botón para eliminar asignatura -->
+                                                    <button (click)="deleteAsignatura(cargaAcademica, asignatura)" class="btn btn-outline-danger btn-sm">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                </li>
+                                            }
+                                        }@else {
+                                            <li class="list-group-item">No tiene asignaturas.</li>
+                                        }
+                                    </ul>
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }@empty {
+                <div class="h4">No hay cargas académicas disponibles</div>
+            }
+        } @else {
+            <div class="d-flex align-items-center">
+                <strong>Cargando cargas académicas...</strong>
+                <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+            </div>
+        }
+  
+          }@else {
+              <div class="h4 text-center">Seleccione una carrera</div>
+          }
+      </div>
+  
+  
+
+  </div>  
+    </div>
+</div>

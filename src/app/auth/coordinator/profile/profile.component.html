@@ -1,0 +1,72 @@
+<div class="container h-100 d-flex justify-content-center align-items-center">
+  <div class="row justify-content-center w-100">
+    <div class="col-12 col-md-8">
+      <div class="card">
+        <div class="mx-4 mt-4 d-flex justify-content-between align-items-center">
+          <h5>User Profile</h5>
+          <button (click)="toggleEdit()" class="btn btn-outline-secondary">
+            <i class="bi bi-pencil"></i>
+          </button>
+        </div>
+
+        <div class="card-body">
+          <div class="d-flex align-items-center">
+            <img src="/assets/placeholders/image.png" alt="User Avatar" class="img-fluid rounded-circle mr-3" style="max-width: 80px; height: auto;">
+            <div class="ms-3 mt-3 w-100">
+              <!-- Formulario en modo edición -->
+              <div *ngIf="isEditing">
+                <form  [formGroup]="formulario">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label for="name" class="form-label">Nombre</label>
+                      <input id="name" formControlName="name" type="text" class="form-control" aria-label="Nombre del coordinador">
+                    </div>
+                    <div class="col-md-6">
+                      <label for="last_name" class="form-label">Apellido</label>
+                      <input id="last_name" formControlName="last_name" type="text" class="form-control" aria-label="Apellido del coordinador">
+                    </div>
+                  </div>
+                  <div class="my-2">
+                    <label for="departament" class="form-label">Departamento</label>
+                    <input id="departament" formControlName="departament" type="text" class="form-control" aria-label="Departamento del coordinador">
+                  </div>
+                  <div class="my-2">
+                    <label for="email" class="form-label">Correo</label>
+                    <input id="email" type="email" formControlName="email" class="form-control" aria-label="Correo del coordinador">
+                  </div>
+                </form>
+                <!-- Modo de visualización normal -->
+              </div>
+              @if (!isEditing) {
+                <h5 class="mb-0">{{ coordinador.name }} {{ coordinador.last_name }}</h5>
+                <p class="text-muted">Coordinador</p>
+              }
+            </div>
+          </div>
+          <hr>
+
+          <div>
+            <div class="my-2">
+              <p><strong>Identificación:</strong></p>
+              <p class="text-muted">{{ coordinador.identify }}</p>
+            </div>
+            <div class="my-2">
+              <p><strong>Departamento:</strong></p>
+              <p class="text-muted">{{ coordinador.departament }}</p>
+            </div>
+            <div class="my-2">
+              <p><strong>Correo:</strong></p>
+              <p class="text-muted">{{ coordinador.email }}</p>
+            </div>
+          </div>
+
+          <!-- Botones de Guardar y Cancelar cuando está en modo edición -->
+          <div *ngIf="isEditing" class="d-flex justify-content-end mt-4">
+            <button type="button" (click)="submitEdit()" class="btn btn-outline-primary me-2">Guardar Cambios</button>
+            <button type="button" (click)="cancelEdit()" class="btn btn-outline-secondary">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

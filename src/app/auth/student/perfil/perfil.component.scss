@@ -1,0 +1,115 @@
+
+
+*{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}
+
+
+.seccion-perfil-usuario {
+  display: flex;
+  height: 100%;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+.seccion-perfil-usuario .perfil-usuario-header {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada {
+  display: block;
+  position: relative;
+  width: 90%;
+  height: 17rem;
+  border-radius: 0 0 20px 20px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar {
+  display: flex;
+  width: 180px;
+  height: 180px;
+  align-items: center;
+  justify-content: center;
+  border: 7px solid #FFFFFF;
+  background-color: #DFE5F2;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+  position: absolute;
+  bottom: -40px;
+  left: calc(50% - 90px);
+  z-index: 1;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar img {
+  width: 100%;
+  position: relative;
+  border-radius: 50%;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body {
+  width: 70%;
+  position: relative;
+  max-width: 750px;
+  background-color: #fff;
+  padding: 1.5rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+  border-radius: 15px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-bio {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-bio .titulo {
+  font-size: 1.75em;
+  margin-bottom: 0.5rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-bio .texto {
+  color: #848484;
+  font-size: 0.95em;
+}
+
+.seccion-perfil-usuario .lista-datos {
+  width: 50%;
+  list-style: none;
+}
+
+.seccion-perfil-usuario .lista-datos li {
+  padding: 5px 0;
+}
+
+.seccion-perfil-usuario .redes-sociales {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.seccion-perfil-usuario .redes-sociales .boton-redes {
+  background-color: #fff;
+  color: #000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+}
+
+@media (max-width: 750px) {
+  .seccion-perfil-usuario .perfil-usuario-body {
+      width: 90%;
+  }
+
+  .seccion-perfil-usuario .lista-datos {
+      width: 100%;
+  }
+}

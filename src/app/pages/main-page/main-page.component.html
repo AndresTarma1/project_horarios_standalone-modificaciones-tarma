@@ -1,0 +1,214 @@
+<body class="bg-gray-100 text-gray-800 transition-colors duration-300">
+    <!-- Navbar mejorado -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50 transition-all duration-300 ease-in-out">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a class="text-2xl font-bold flex items-center">
+                    <img src="/main-page/logo-full.png" alt="logo" class="h-12 w-auto mr-2">
+                </a>
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="https://educacion-continua.libertadores.edu.co/" class="no-underline text-gray-700 hover:text-libertadores-green transition duration-300">Formación Continua</a>
+                    <a href="https://www.ulibertadores.edu.co/admision/becas-y-beneficios/" class="no-underline text-gray-700 hover:text-libertadores-green transition duration-300">Beneficios</a>
+                    <div class="relative group">
+                        <button
+                          class="text-gray-700 hover:text-libertadores-green transition duration-300 flex items-center"
+                          (click)="toggleDropdown()"
+                        >
+                          Iniciar Sesión
+                          <svg
+                            class="w-4 h-4 ml-1"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              d="M19 9l-7 7-7-7"
+                            ></path>
+                          </svg>
+                        </button>
+                        <div
+                          class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg"
+                          *ngIf="isDropdownOpen"
+                        >
+                        <a
+                        class="block rounded-t-lg px-4 py-2 no-underline text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                        href="login/coordinator"
+                      >
+                        Coordinador
+                      </a>
+                      <a
+                        class="block px-4 py-2 no-underline text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                        href="login/teacher"
+                      >
+                        Profesor
+                      </a>
+                      <a
+                        class="block px-4 py-2 no-underline text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                        href="login/student"
+                      >
+                        Estudiante
+                      </a>
+                      <a
+                        class="block px-4 rounded-b-lg py-2 no-underline text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                        href="login/admin"
+                      >
+                        Administrador
+                      </a>
+                        </div>
+                      </div>
+                </div>
+                <button (click)="toggleMobileMenu()" class="md:hidden text-gray-700 focus:outline-none" id="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+        <div
+        class="md:hidden bg-white transition-all duration-500 ease-in-out"
+        [ngClass]="{
+          'hidden': !isMobileMenuOpen,
+          'opacity-0 translate-y-10': !isMobileMenuOpen,
+          'opacity-100 translate-y-0': isMobileMenuOpen
+        }"
+      >
+        <div class="py-2 px-4">
+            <span class="block text-sm font-medium text-gray-900">Iniciar Sesión</span>
+            <a
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer no-underline"
+              href="login/coordinator"
+              >Coordinador</a
+            >
+            <a
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer no-underline"
+              href="login/teacher"
+              >Profesor</a
+            >
+            <a
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer no-underline"
+              href="login/student"
+              >Estudiante</a
+            >
+            <a
+              class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer no-underline"
+              href="login/admin"
+              >Administrador</a
+            >
+        </div>
+        
+      </div>
+      
+    </nav>
+
+    <!-- Banner con slider -->
+    <div class="relative h-screen overflow-hidden fade-in">
+        <div class="swiper mySwiper h-full">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="/main-page/libertadores-baner1.png" alt="banner1" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                        <div class="text-center glass-effect p-8">
+                            <p class="text-white text-uppercase text-xl md:text-2xl mb-8">Sistema de creacion de horarios</p>
+                            <div class="flex flex-wrap justify-center gap-4">
+                                <a href="https://www.ulibertadores.edu.co/programas/" class="bg-white no-underline text-libertadores-green px-6 py-3 rounded-full hover:bg-libertadores-gold hover:text-black transition duration-300 transform hover:scale-105">Programas Académicos</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+
+    <div class="container mx-auto px-4 py-16">
+        
+      <div class="mb-16 fade-in">
+        <h2 class="text-4xl font-bold mb-8 text-libertadores-green text-center">Sistema de Creación de Horarios</h2>
+        <div class="bg-white rounded-lg shadow-xl p-8 hover:shadow-2xl transition duration-300">
+            <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                Bienvenido al sistema de creación de horarios de la Universidad Los Libertadores. 
+                Aquí podrás organizar y gestionar los horarios de clases de forma sencilla, eficiente y personalizada.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+                <div class="text-center p-6 bg-gray-50 rounded-lg hover:bg-libertadores-green hover:text-white transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-calendar-alt text-5xl text-libertadores-green mb-4 group-hover:text-white"></i>
+                    <h3 class="text-xl font-semibold mb-2">Planificación</h3>
+                    <p class="text-white-600 hover:text-white-200">Crea horarios detallados para cada grupo y asignatura.</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-lg hover:bg-libertadores-green hover:text-white transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-chalkboard-teacher text-5xl text-libertadores-green mb-4 group-hover:text-white"></i>
+                    <h3 class="text-xl font-semibold mb-2">Asignación de Profesores</h3>
+                    <p class="text-white-600 hover:text-white-200">Asocia profesores a las clases según disponibilidad.</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-lg hover:bg-libertadores-green hover:text-white transition duration-300 transform hover:scale-105">
+                    <i class="fas fa-clock text-5xl text-libertadores-green mb-4 group-hover:text-white"></i>
+                    <h3 class="text-xl font-semibold mb-2">Gestión de Horarios</h3>
+                    <p class="text-white-600 hover:text-white-200">Visualiza y ajusta los horarios en tiempo real.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+      <div class="mb-16 fade-in">
+        <h2 class="text-4xl font-bold mb-8 text-libertadores-green text-center">Horarios Destacados</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-lg shadow-lg p-6 hover-grow">
+                <h3 class="text-xl font-semibold mb-2 text-libertadores-green">Horario del Estudiante</h3>
+                <p class="text-gray-600 mb-4">Consulta el horario completo del estudiante, incluyendo asignaturas y horarios de clase.</p>
+                <a href="login/student" class="text-libertadores-green hover:text-libertadores-gold transition duration-300">Ver horario</a>
+            </div>
+            <div class="bg-white rounded-lg shadow-lg p-6 hover-grow">
+              <h3 class="text-xl font-semibold mb-2 text-libertadores-green">Crear Horario</h3>
+              <p class="text-gray-600 mb-4">El coordinador puede crear y gestionar horarios para clases y actividades académicas.</p>
+              <a href="login/coordinator" class="text-libertadores-green hover:text-libertadores-gold transition duration-300">Crear horario</a>
+            </div>
+          
+            <div class="bg-white rounded-lg shadow-lg p-6 hover-grow">
+                <h3 class="text-xl font-semibold mb-2 text-libertadores-green">Horario del Profesor</h3>
+                <p class="text-gray-600 mb-4">Revisa el horario del profesor para planificar clases y otras actividades docentes.</p>
+                <a href="login/teacher" class="text-libertadores-green hover:text-libertadores-gold transition duration-300">Ver horario</a>
+            </div>
+        </div>
+      </div>
+  
+    </div>
+
+    
+    <footer class="bg-gradient-to-r from-libertadores-green to-green-600 text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h5 class="text-2xl font-bold mb-4">Contáctanos</h5>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt mr-2"></i> Carrera 16 # 63A - 68, Bogotá</p>
+                    <p class="mb-2"><i class="fas fa-phone mr-2"></i> (601) 254 4750</p>
+                    <p><i class="fas fa-envelope mr-2"></i> horarios&#64;libertadores.edu.co</p>
+                </div>
+                <div>
+                    <h5 class="text-2xl font-bold mb-4">Enlaces Rápidos (Logins) </h5>
+                    <a href="login/coordinator" class="block cursor-pointer text-white no-underline mb-2 hover:text-black transition duration-300">Coordinador</a>
+                    <a href="login/student"  class="block cursor-pointer text-white no-underline mb-2 hover:libertadores-gold transition duration-300">Estudiante</a>
+                    <a href="login/teacher"  class="block cursor-pointer text-white no-underline mb-2 hover:libertadores-gold transition duration-300">Profesor</a>
+                    <a href="login/admin"  class="block cursor-pointer text-white no-underline mb-2 hover:libertadores-gold transition duration-300">Administrador</a>
+                </div>
+                <div>
+                    <h5 class="text-2xl font-bold mb-4">Redes Sociales</h5>
+                    <a href="https://www.facebook.com/UniLibertadores/" class="block text-white no-underline mb-2 hover:text-libertadores-gold transition duration-300"><i class="fab fa-facebook mr-2"></i> Facebook</a>
+                    <a class="block cursor-pointer text-white no-underline mb-2 hover:libertadores-gold transition duration-300"><i class="fab fa-twitter mr-2"></i> Twitter</a>
+                    <a class="block cursor-pointer text-white no-underline mb-2 hover:libertadores-gold transition duration-300"><i class="fab fa-instagram mr-2"></i> Instagram</a>
+                    <a class="block cursor-pointer text-white no-underline hover:libertadores-gold transition duration-300"><i class="fab fa-linkedin mr-2"></i> LinkedIn</a>
+                </div>
+            </div>
+        </div>
+        <div class="bg-libertadores-green py-4">
+            <div class="container mx-auto px-4 text-center">
+                <p>&copy; 2024 Sistema de Horarios - Universidad Los Libertadores. Todos los derechos reservados a andres tarras.</p>
+            </div>
+        </div>
+    </footer>
+
+    
+</body>

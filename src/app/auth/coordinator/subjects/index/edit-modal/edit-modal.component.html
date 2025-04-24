@@ -1,0 +1,113 @@
+<div class="modal-header">
+    <h5 class="modal-title">Editar Asignatura</h5>
+    <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="activeModal.dismiss()"
+    ></button>
+</div>
+
+
+<form
+    [formGroup]="editForm"
+    (ngSubmit)="onSubmit()"
+>
+    <div class="modal-body">
+        <div class="mb-3">
+            <label
+                for="id"
+                class="form-label"
+            >
+                ID
+            </label>
+            <input
+                formControlName="id"
+                type="text"
+                id="id"
+                class="form-control"
+                [attr.disabled]="true"
+            >
+        </div>
+
+
+        <div class="mb-3">
+            <label
+                for="name"
+                class="form-label"
+            >
+                Nombre
+            </label>
+            <input
+                formControlName="name"
+                type="text"
+                id="name"
+                class="form-control"
+                placeholder="Nombre de la asignatura"
+            >
+        </div>
+
+
+        <div class="mb-3">
+            <label
+                for="description"
+                class="form-label"
+            >
+                Descripción
+            </label>
+            <textarea
+                formControlName="description"
+                id="description"
+                class="form-control"
+                placeholder="Descripción de la asignatura"
+            ></textarea>
+        </div>
+
+
+        <div class="mb-3">
+            <label
+                for="subject-hour"
+                class="form-label"
+            >
+                Horas semanales
+            </label>
+            <select
+                formControlName="hours_week"
+                id="subject-hour"
+                class="form-select"
+            >
+                <option value="active">4 horas</option>
+                <option value="inactive">3 horas</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="modal-footer">
+        <button
+            type="button"
+            class="btn btn-secondary"
+            (click)="activeModal.dismiss()"
+        >
+            Cancelar
+        </button>
+
+
+        <button
+            type="submit"
+            class="btn btn-primary"
+            [disabled]="editForm.invalid"
+        >
+            Guardar cambios
+        </button>
+
+
+        <button
+            (click)="borrarAsignatura()"
+            type="button"
+            class="btn btn-danger"
+        >
+            Eliminar
+        </button>
+    </div>
+</form>

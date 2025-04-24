@@ -1,0 +1,29 @@
+@if (estudiantes$ | async; as estudiantesInfo) {
+
+<div class="container-fluid">
+  <!-- Contenido introductorio -->
+  <div class="row">
+    <div class="col-md-12 mt-4">
+      <h1 class="text-primary">Panel de Administración</h1>
+      <p class="text-secondary">
+        Bienvenido al sistema de gestión de estudiantes. Aquí podrás ver la lista de estudiantes registrados, filtrarlos por carrera y agregar nuevos registros.
+      </p>
+    </div>
+  </div>
+
+  <!-- Tabla de Estudiantes -->
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <h2 class="text-dark">Lista de estudiantes Registrados</h2>
+        <app-table (userDelete)="eliminarEstudiante($event)" (userEdit)="editarEstudiante($event)" [columns]="columnas" [datos]="estudiantesInfo.student" ></app-table>
+      </div>
+    </div>
+  </div>
+
+}@else if(error){
+  <app-error-servidor/>
+}@else {
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "pacman" [fullScreen] = "true">
+    <p style="color: white" >Cargando...</p>
+  </ngx-spinner>
+}

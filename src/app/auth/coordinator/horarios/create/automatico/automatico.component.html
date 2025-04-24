@@ -1,0 +1,84 @@
+<div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+  <div class="container mt-4">
+    <h3 class="text-center text-primary">Creación De Horarios</h3>
+    <p class="text-center text-secondary">Sistema De Creación De Horarios De Clases automáticamente</p>
+
+    <hr class="border border-3 opacity-75 mb-4" />
+
+    <div class="row justify-content-center">
+      <div class="col-lg-6 form-horario">
+        <form (ngSubmit)="onSubmit()" [formGroup]="horarioForm" class="bg-light p-4 rounded shadow-sm">
+          <!-- Carreras -->
+          <div class="mb-3">
+            <label class="form-label" for="carrer"><strong>Carreras</strong></label>
+            <select formControlName="id_career" (change)="obtenerCargasAcademicas()" class="form-select" name="carrer" id="carrer">
+              @if (carreras$ | async; as carrerasInfo) {
+                <option value="" selected>Seleccione</option>
+                @for (carrera of carrerasInfo.data; track $index) {
+                  <option [value]="carrera.id">{{ carrera.name }}</option>
+                }@empty {
+                  <option selected value="">No hay carreras disponibles</option>
+                }
+              }@else {
+                <option selected disabled value="">Cargando...</option>
+              }
+            </select>
+          </div>
+
+          <!-- Cargas Académicas -->
+          <div class="mb-3">
+            <label for="academic_load" class="form-label"><strong>Cargas Académicas</strong></label>
+            <select (change)="obtenerGrupos()" formControlName="id_academic_load" name="academic_load" id="academic_load" class="form-select">
+              @if (cargas_academicas$ | async; as carga_academicaInfo) {
+                <option value="" selected>Seleccione su carga académica</option>
+                @for (carga_academica of carga_academicaInfo.cargas; track $index) {
+                  <option [value]="carga_academica.id">{{ carga_academica.name }}</option>
+                }@empty {
+                  <option selected value="">No hay cargas académicas disponibles</option>
+                }
+              }@else {
+                <option selected disabled value="">Seleccione una carrera</option>
+              }
+            </select>
+          </div>
+
+          <!-- Grupos -->
+          <div class="mb-3">
+            <label for="group" class="form-label"><strong>Grupos</strong></label>
+            <select formControlName="id_group" name="group" id="group" class="form-select">
+              @if (grupos$ | async; as gruposInfo) {
+                <option value="" selected>Seleccione un grupo</option>
+                @for (grupo of gruposInfo.groups; track $index) {
+                  <option [value]="grupo.id">{{ grupo.name }}</option>
+                }@empty {
+                  <option selected value="">No hay grupos disponibles</option>
+                }
+              }@else {
+                <option selected disabled value="">Seleccione una carga académica</option>
+              }
+            </select>
+          </div>
+
+          <!-- Botón de Crear Horario -->
+          <div class="form-group mt-3">
+            <button [disabled]="horarioForm.invalid" type="submit" class="btn btn-secondary w-100">Crear Horario</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="col-lg-6 pasos">
+        <fieldset class="border rounded-3 p-4 bg-light shadow-sm">
+          <legend class="float-none w-auto px-3">Creación de horarios</legend>
+          <h3 class="text-center text-primary">Pasos</h3>
+          <hr class="border border-2 opacity-75 my-3" />
+          <ol class="text-secondary">
+            <li>Seleccione la carrera.</li>
+            <li>Seleccione la carga académica de la carrera.</li>
+            <li>Seleccione el grupo al cual le asignará el horario.</li>
+            <li>Presione crear horarios, para crearlos.</li>
+          </ol>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</div>

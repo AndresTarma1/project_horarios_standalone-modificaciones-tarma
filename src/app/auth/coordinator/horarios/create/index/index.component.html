@@ -1,0 +1,53 @@
+<div class="container-fluid">
+  <ul
+    ngbNav
+    #nav="ngbNav"
+    [(activeId)]="active"
+    class="nav nav-tabs justify-content-center mt-2 border-bottom-0"
+    style="border-radius: 0.5rem; overflow: hidden;"
+  >
+    <li [ngbNavItem]="1" class="nav-item">
+      <button
+        class="nav-link text-dark"
+        ngbNavLink
+        [class.active-tab]="active === 1"
+        [class.inactive-tab]="active !== 1"
+      >
+        SemiAutomatico
+      </button>
+      <ng-template ngbNavContent>
+        <app-semiautomatico></app-semiautomatico>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2" class="nav-item">
+      <button
+        class="nav-link text-dark"
+        ngbNavLink
+        [class.active-tab]="active === 2"
+        [class.inactive-tab]="active !== 2"
+      >
+        Manual
+      </button>
+      <ng-template ngbNavContent>
+        <app-manual></app-manual>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="3" class="nav-item">
+      <button
+        class="nav-link text-dark"
+        ngbNavLink
+        [class.active-tab]="active === 3"
+        [class.inactive-tab]="active !== 3"
+      >
+        Automatico
+      </button>
+      <ng-template ngbNavContent>
+        <app-automatico></app-automatico>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-4 p-3 border rounded" style="background-color: #ffffff;">
+  </div>
+</div>
+

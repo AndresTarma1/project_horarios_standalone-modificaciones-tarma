@@ -1,0 +1,141 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6 mt-4">
+      <h2 class="mb-2">Formulario Registro De Coordinador</h2>
+      <form
+        (ngSubmit)="onSubmit()"
+        [formGroup]="coordinatorForm"
+        class="light-form"
+      >
+        <!-- Nombres y Apellidos en una fila -->
+        <div class="row my-3">
+          <div class="col-md-6">
+            <label for="name" class="form-label w-100 text-start">Nombres</label>
+            <input
+
+              formControlName="name"
+              type="text"
+              id="name"
+              required
+              class="form-control"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="last_name" class="form-label w-100 text-start"
+              >Apellidos</label
+            >
+            <input
+              formControlName="last_name"
+              type="text"
+              id="last_name"
+              required
+              class="form-control"
+            />
+          </div>
+        </div>
+
+        <!-- Teléfono -->
+        <div class="mb-3">
+          <label for="phone" class="form-label w-100 text-start">Teléfono</label>
+          <input
+            formControlName="phone"
+            type="text"
+            class="form-control"
+            id="phone"
+            required
+          />
+        </div>
+
+        <!-- N° Documento y Departamento en una fila -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="documento" class="form-label  w-100 text-start"
+              >N° Documento</label
+            >
+            <input
+              formControlName="identify"
+              type="text"
+              class="form-control"
+              id="documento"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="departamento" class="form-label w-100 text-start"
+              >Departamento</label
+            >
+            <input
+              formControlName="departament"
+              type="text"
+              class="form-control"
+              id="departamento"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Correo Electrónico y Contraseña en una fila -->
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="correo" class="form-label w-100 text-start"
+              >Correo electrónico</label
+            >
+            <input
+              formControlName="email"
+              type="email"
+              class="form-control"
+              id="correo"
+              required
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="password" class="form-label w-100 text-start"
+              >Contraseña</label
+            >
+            <input
+              formControlName="password"
+              type="password"
+              class="form-control"
+              id="password"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="text-start">
+          <button
+            [disabled]="coordinatorForm.invalid"
+            type="submit"
+            class="btn btn-primary mt-3 w-50"
+          >
+            Registrar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-6 mt-4 text-start">
+      <h2 class="text-primary">Bienvenido</h2>
+      <p class="text-secondary">
+        Este es el formulario de registro de coordinadores. A continuación,
+        encontrarás los campos necesarios para completar la inscripción.
+      </p>
+      <h3 class="text-primary">Instrucciones:</h3>
+      <p class="text-secondary">
+        - Completa todos los campos obligatorios con la información requerida.
+      </p>
+      <p class="text-secondary">
+        - Asegúrate de ingresar un correo electrónico válido para recibir
+        notificaciones.
+      </p>
+      <p class="text-secondary">
+        - Verifica que el número de documento y el teléfono sean correctos.
+      </p>
+      <h3 class="text-primary">¿Necesitas ayuda?</h3>
+      <p class="text-secondary">
+        Si tienes alguna pregunta, no dudes en consultar a nuestro equipo de
+        soporte.
+      </p>
+    </div>
+  </div>
+</div>

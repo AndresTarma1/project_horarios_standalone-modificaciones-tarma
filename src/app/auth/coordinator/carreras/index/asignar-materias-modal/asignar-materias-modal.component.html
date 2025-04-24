@@ -1,0 +1,47 @@
+<div class="modal-header">
+  <h5 class="modal-title">Añadir Asignatura</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+</div>
+<div class="modal-body">
+  <!-- Selector de asignaturas existentes -->
+  <div class="form-group mb-3">
+    <label for="selectAsignatura">Asignaturas Existentes</label>
+    <select [disabled]="mostrarCrearNueva" id="selectAsignatura" class="form-control" [(ngModel)]="selectedAsignatura">
+      @if (asignaturas.length > 0) {
+        @for (asignatura of asignaturas; track $index) {
+          <option [value]="asignatura.id">{{ asignatura.name }}</option>
+        }
+      }@else {
+        <option selected value="">No hay asignaturas disponibles</option>
+      }
+    </select>
+  </div>
+
+  <!-- Formulario para crear nueva asignatura -->
+  <button class="btn btn-outline-secondary mb-3" (click)="toggleCrearNueva()">Crear Nueva Asignatura</button>
+
+  <div *ngIf="mostrarCrearNueva">
+    <div class="form-group">
+      <label for="nombreNuevaAsignatura">Nombre</label>
+      <input type="text" id="nombreNuevaAsignatura" class="form-control" [(ngModel)]="nuevaAsignatura.name">
+    </div>
+    <div class="form-group">
+      <label for="descripcionNuevaAsignatura">Descripción</label>
+      <input type="text" id="descripcionNuevaAsignatura" class="form-control" [(ngModel)]="nuevaAsignatura.description">
+    </div>
+    <div class="form-group">
+      <label for="hours_week">Horas semanales</label>
+      <select class="form-select" [(ngModel)]="nuevaAsignatura.hours_week" name="hours_week" id="hours_week">
+        <option value="3">3 horas</option>
+        <option value="4">4 horas</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-outline-secondary" (click)="closeModal()">Cerrar</button>
+  @if (mostrarCrearNueva) {
+    <button class="btn btn-primary" [disabled]="!verificarDatosAsignador()" (click)="crearYAgregarAsignatura()">Crear y Añadir</button>
+  }
+  <button [disabled]="!selectedAsignatura" class="btn btn-primary" (click)="agregarAsignaturaExistente()">Añadir Asignatura</button>
+</div>

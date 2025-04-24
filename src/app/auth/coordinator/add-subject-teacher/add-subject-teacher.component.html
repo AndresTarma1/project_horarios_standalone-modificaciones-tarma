@@ -1,0 +1,110 @@
+<div class="container-fluid">
+
+  <div class="bg-white rounded px-4 mt-4">
+
+    <br>
+    <div class="h2 text-center">Control de asignaturas de maestros</div>
+    <p class="text-center text-muted">
+      En esta página puedes asignar materias a los profesores y gestionar las asignaturas ya asignadas.
+    </p>
+
+
+    <hr class="my-5">
+
+    <div class="row">
+      <!-- Columna del formulario -->
+      <div class="col-12 col-md-6 mb-4">
+        <div class="p-4 bg-white rounded shadow-sm">
+          <h5 class="mb-3">Asignar materias a un maestro</h5>
+          <p class="text-muted">
+            Selecciona un maestro de la lista y una asignatura para añadirla a su carga académica.
+            Solo aparecerán las asignaturas disponibles.
+          </p>
+          <form (ngSubmit)="addAsignaturaAMaestro()" [formGroup]="asignacionMaterias">
+            <!-- Selección de Profesor -->
+            <div class="form-group mb-4">
+              <label class="form-label" for="profesor">Profesor</label>
+              <select formControlName="id_teacher" (change)="obtenerAsignaturas()" class="form-select" name="profesor"
+                id="profesor">
+                <option selected value="">Seleccione un profesor</option>
+                @if (profesores$ | async; as profesoresInfo) {
+                @for (profesor of profesoresInfo.teachers; track $index) {
+                <option [value]="profesor.id">{{ profesor.id }} -- {{ profesor.name | titlecase }}</option>
+                }@empty {
+                <option value="">No hay profesores disponibles</option>
+                }
+                }
+              </select>
+            </div>
+
+            <!-- Selección de Asignatura -->
+            <div class="form-group mb-4">
+              <label class="form-label" for="asignatura">Asignatura</label>
+              <select formControlName="id_subject" class="form-select" name="asignatura" id="asignatura">
+                @if (asignaturas$ | async; as asignaturasInfo) {
+                <option value="">Seleccione una asignatura</option>
+                @for (asignatura of asignaturasInfo.subjects; track $index) {
+                <option [value]="asignatura.id">{{ asignatura.name | titlecase }}</option>
+                }@empty {
+                <option value="">No hay asignaturas disponibles</option>
+                }
+                }
+                @else {
+                <option value="">Seleccione un profesor primero</option>
+                }
+              </select>
+            </div>
+
+            <!-- Botón de Añadir Asignatura de Maestro -->
+            <div class="form-group d-flex justify-content-start">
+              <button [disabled]="asignacionMaterias.invalid" type="submit" class="btn btn-secondary">
+                Añadir Asignatura de Maestro
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Columna de asignaturas del maestro -->
+      <div class="col-12 col-md-6 mb-4">
+        <div class="p-4 bg-white rounded shadow-sm">
+          <h5 class="mb-3">Asignaturas del maestro</h5>
+          <p class="text-muted">
+            Aquí puedes ver las asignaturas actualmente asignadas al maestro seleccionado.
+            También puedes eliminarlas si es necesario.
+          </p>
+          @if (asignaturasMaestro$ | async; as asignaturasDelMaestroInfo) {
+          <ul class="list-group">
+            @for (asignatura of asignaturasDelMaestroInfo.subjects; track $index) {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <span>{{ asignatura.name }}</span>
+              <button (click)="eliminarAsignaturaDelMaestro(asignatura)" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-trash"></i> Eliminar
+              </button>
+            </li>
+            }@empty {
+            <div class="h6" role="alert">
+              No hay asignaturas disponibles.
+            </div>
+            }
+          </ul>
+          }@else {
+          @if (!asignacionMaterias.controls['id_teacher'].value) {
+          <h5>Seleccione un maestro para ver sus asignaturas</h5>
+          }@else {
+          <div class="d-flex align-items-center">
+            <strong>Cargando asignaturas...</strong>
+            <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+          </div>
+          }
+          }
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

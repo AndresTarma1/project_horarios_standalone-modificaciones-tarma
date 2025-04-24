@@ -1,0 +1,43 @@
+.login-container {
+  background: url('/assets/images/bg.jpg') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  width: 400px;
+}
+
+h2 {
+  color: #000000;
+}
+
+.input-group-text {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 10px 0 0 10px;
+  color: #000000;
+}
+
+.form-control {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #000;
+  border-radius: 0 10px 10px 0;
+}
+
+.btn-primary {
+  background-color: #9c27b0;
+  border: none;
+  border-radius: 10px;
+}
+
+.btn-primary:hover {
+  background-color: #7b1fa2;
+}

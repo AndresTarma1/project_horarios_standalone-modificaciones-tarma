@@ -1,0 +1,32 @@
+@if (profesores$ | async; as profesorInfo) {
+  <div class="container-fluid">
+    <!-- Contenido introductorio -->
+    <div class="row">
+      <div class="col-md-12 mt-4">
+        <h1 class="text-primary">Panel de Administración</h1>
+        <p class="text-secondary">
+          Bienvenido al sistema de gestión de profesores. Aquí podrás ver la lista de profesores registrados, filtrarlos por carrera y agregar nuevos registros.
+        </p>
+      </div>
+    </div>
+
+    <!-- Tabla de Estudiantes -->
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <h2 class="text-dark">Lista de profesores Registrados</h2>
+
+        <app-table (userDelete)="eliminarProfesor($event)" (userEdit)="editarProfesor($event)" [columns]="columnas" [datos]="profesorInfo.teachers" ></app-table>
+
+        <!-- Paginación y texto de conteo -->
+
+      </div>
+    </div>
+  </div>
+}@else if(error){
+  <app-error-servidor/>
+}@else {
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "pacman">
+    <p style="color: white" > Cargando </p>
+  </ngx-spinner>
+}
+

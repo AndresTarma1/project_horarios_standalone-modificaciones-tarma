@@ -1,0 +1,43 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ carrera.name | titlecase }}</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="activeModal.dismiss()"
+  ></button>
+</div>
+<form (ngSubmit)="crearCargaAcademica()" [formGroup]="formulario">
+  <div class="modal-body">
+
+    <!-- Nombre Input -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Nombre</label>
+      <input
+        formControlName="name"
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Primer semestre..."
+        aria-label="name"
+      />
+    </div>
+  </div>
+
+  <div class="modal-footer d-flex justify-content-end gap-2">
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      (click)="activeModal.close()"
+    >
+      Cerrar
+    </button>
+    <button
+      [disabled]="formulario.invalid"
+      type="submit"
+      class="btn btn-outline-primary"
+    >
+      Crear
+    </button>
+  </div>
+</form>

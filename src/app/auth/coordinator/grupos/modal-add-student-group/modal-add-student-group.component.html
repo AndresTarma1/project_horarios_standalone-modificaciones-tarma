@@ -1,0 +1,34 @@
+<div class="modal-header">
+  <h5 class="modal-title">Añadir estudiantes al grupo {{ grupo.name }}</h5>
+</div>
+<div class="modal-body">
+  @if (estudiantesNoGrupo$ | async; as EstudiantesSinGrupoInfo) {
+    <ul class="list-group list-group-flush">
+      @for (estudiante of EstudiantesSinGrupoInfo.student; track $index) {
+        <li class="list-group-item d-flex justify-content-between align-items-center border-bottom">
+          <div>
+            <strong>{{ estudiante.id }} - {{ estudiante.name | titlecase }} {{ estudiante.last_name | titlecase }}</strong>
+          </div>
+          <div>
+            <button
+              class="btn btn-success btn-sm"
+              (click)="addEstudianteGrupo(estudiante.id)"
+            >
+              Añadir
+            </button>
+          </div>
+        </li>
+      } @empty {
+        <li class="list-group-item text-center">No hay estudiantes sin grupo...</li>
+      }
+    </ul>
+  }@else {
+  <div class="d-flex align-items-center">
+    <strong role="status">Loading...</strong>
+    <div class="spinner-border ms-auto" aria-hidden="true"></div>
+  </div>
+  }
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.close(cambios)">Cerrar</button>
+</div>

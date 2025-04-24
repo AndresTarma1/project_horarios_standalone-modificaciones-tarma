@@ -1,0 +1,68 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6 mt-4">
+      <h2 class="mb-2">Formulario Registro De Profesor</h2>
+      <form (ngSubmit)="onSubmit()" [formGroup]="teacherForm" class="dark-form">
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="firstName" class="form-label w-100 text-start">Nombres:</label>
+            <input formControlName="name" type="text" id="firstName" required class="form-control dark-input">
+          </div>
+          <div class="col-md-6">
+            <label for="lastName" class="form-label w-100 text-start">Apellidos:</label>
+            <input formControlName="last_name" type="text" id="lastName" required class="form-control dark-input">
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="documentNumber" class="form-label w-100 text-start">N° Documento:</label>
+            <input formControlName="identify" type="text" id="documentNumber" required class="form-control dark-input">
+          </div>
+          <div class="col-md-6">
+            <label for="phone" class="form-label w-100 text-start">Teléfono:</label>
+            <input formControlName="phone" type="text" id="phone" required class="form-control dark-input">
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="email" class="form-label w-100 text-start">Correo Electrónico:</label>
+            <input formControlName="email" type="email" id="email" required class="form-control dark-input">
+          </div>
+          <div class="col-md-6">
+            <label for="password" class="form-label w-100 text-start">Contraseña:</label>
+            <input formControlName="password" type="password" id="password" required class="form-control dark-input">
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="specialty" class="form-label w-100 text-start">Especialidad:</label>
+          <input formControlName="specialty" type="text" id="specialty" required class="form-control dark-input">
+        </div>
+
+        <div class="text-start">
+          <button [disabled]="teacherForm.invalid" type="submit" class="btn btn-primary mt-3 w-50">Registrar</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-6 mt-4 text-start">
+      <h2 class="text-primary">Bienvenido</h2>
+      <p class="text-secondary">
+        Este es el formulario de registro de profesores. A continuación, encontrarás los campos necesarios para completar la inscripción.
+      </p>
+      <h3 class="text-primary">Instrucciones:</h3>
+      <p class="text-secondary">
+        - Completa todos los campos obligatorios con la información requerida.
+      </p>
+      <p class="text-secondary">
+        - Verifica que el número de documento y el teléfono sean correctos.
+      </p>
+      <h3 class="text-primary">¿Necesitas ayuda?</h3>
+      <p class="text-secondary">
+        Si tienes alguna pregunta, no dudes en consultar a nuestro equipo de soporte.
+      </p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+.main-top{
+  display: grid;
+  width: 100%;
+  grid-template-columns: 10fr .5fr;
+}
+.main-top i{
+  position: absolute;
+  right: 0;
+  margin: 10px 30px;
+  color: rgb(110, 109, 109);
+  cursor: pointer;
+}
+
+
+*{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}
+
+
+
+.schedule-container {
+  margin: auto;
+  padding: 20px;
+  background-color: #f4f6f9;
+  border-radius: 8px;
+  overflow: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.schedule-header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background-color: #d1e7ff;
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #004085;
+}
+
+.schedule-header div {
+  flex: 1;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+th {
+  background-color: #cfe2ff;
+  color: #004085;
+}
+
+tr:nth-child(even) {
+  background-color: #f8f9fa;
+}
+
+.highlight {
+  background-color: #d1e7ff;
+  font-weight: bold;
+}
+
+.credit-info {
+  font-size: 12px;
+  color: #555;
+}

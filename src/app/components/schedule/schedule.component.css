@@ -1,0 +1,67 @@
+*{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}
+
+
+.text-hora{
+  font-size: 12px;
+}
+
+.text-asignatura{
+  font-size: 12px;
+}
+
+.schedule-table {
+  table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+}
+.schedule-table th, .schedule-table td {
+  border: 1px solid #24252777;
+  padding: 10px;
+  text-align: center;
+}
+.time-block {
+  background-color: #f8f9fa;
+}
+.time-block th {
+  background-color: #e9ecef;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.schedule-table th, .schedule-table td {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 150px; /* Ajusta este valor según tus necesidades */
+}
+
+.text-asignatura {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .schedule-table th, .schedule-table td {
+    font-size: 12px; /* Ajusta el tamaño de la fuente para pantallas pequeñas */
+  }
+}
+
+@media (max-width: 576px) {
+  .schedule-table th, .schedule-table td {
+    font-size: 10px; /* Ajusta el tamaño de la fuente para pantallas muy pequeñas */
+  }
+}
+
+.popover {
+  position: absolute;
+  z-index: 1000; /* Asegúrate de que el popover esté por encima de otros elementos */
+}
+
+.table-container {
+  position: relative; /* Necesario para que el popover se posicione correctamente */
+}

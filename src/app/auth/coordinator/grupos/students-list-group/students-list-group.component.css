@@ -1,0 +1,39 @@
+.icon-opc{
+  cursor: pointer;
+}
+
+.icon-opc {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.icon-opc:hover {
+  color: #dc3545; /* Cambia el color al pasar el mouse */
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa; /* Cambia el fondo al pasar el mouse */
+}
+
+.text-dark {
+  color: #343a40 !important;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #343a40;
+}
+
+.input-search {
+  margin-bottom: 1rem;
+}
+
+.border-custom {
+  border: 2px solid #dee2e6;
+}

@@ -1,0 +1,46 @@
+.icon-opc {
+  cursor: pointer;
+}
+.icon-opc {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.icon-opc:hover {
+  color: #28a745; /* Cambia el color al pasar el mouse */
+}
+
+.modal-header {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.modal-title {
+  color: #343a40;
+  font-weight: bold;
+}
+
+.modal-body {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list-group-item:hover {
+  background-color: #f8f9fa; /* Cambia el fondo al pasar el mouse */
+}
+
+.spinner-border {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.btn-close {
+  background: none;
+  border: none;
+}

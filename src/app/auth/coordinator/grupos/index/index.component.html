@@ -1,0 +1,107 @@
+<div class="container-fluid mt-2">
+  <div class="bg-white p-4 mb-2 shadow-sm rounded">
+    <h2 class="text-center text-uppercase my-2">Grupos Académicos</h2>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <p class="text-muted mb-0">Gestiona los grupos disponibles o añade nuevos.</p>
+      <button (click)="crearGrupo()" class="btn btn-outline-primary">Añadir Grupo</button>
+    </div>
+
+    <hr class="my-2">
+
+    <!-- Buscar asignatura -->
+    <div class="form-group">
+      <label class="form-label" for="filter-search">Buscar por nombre</label>
+      <div class="input-group">
+        <input [(ngModel)]="filtroInput" class="form-control" type="text" placeholder="Ejemplo: primer semestre" />
+        <button class="btn btn-outline-primary" (click)="filtrarGrupos()">Buscar</button>
+      </div>
+    </div>
+
+    <!-- Validar grupos -->
+    @if (grupos$ | async; as gruposInfo) {
+      <div class="row my-4 grupo-container">
+
+        @if (gruposInfo.groups) {
+          @for (grupo of gruposInfo.groups | paginate: {itemsPerPage: 4, currentPage: p, totalItems: total(gruposInfo)}; track $index) {
+            <div class="col-12 col-md-6 mb-3">
+              <div class="btn-group w-100" role="group" aria-label="Grupo actions">
+                <button (click)="grupoSeleccionada(grupo)"
+                        [ngClass]="{active: grupo.id == selectedGrupo.id}"
+                        class="btn btn-outline-secondary w-100 py-2">
+                  {{ grupo.name | titlecase }}
+                </button>
+                <button (click)="editarGrupo(grupo)" class="btn btn-outline-secondary">
+                  <i class="bi bi-pencil-square"></i>
+                </button>
+              </div>
+            </div>
+          }@empty {
+            <div class="h4">No hay grupos disponibles.</div>
+          }
+          @if (gruposInfo.groups.length > 0) {
+            <div class="align-items-end">
+              <pagination-controls
+                class="text-center"
+                nextLabel="Siguiente"
+                previousLabel="Anterior"
+                (pageChange)="p = $event"
+              ></pagination-controls>
+            </div>
+          }
+        } 
+      </div>
+
+      <hr class="my-3">
+
+      <!-- Información del grupo seleccionado -->
+      <div class="bg-white p-4 shadow-sm rounded section-secundary pb-5">
+        @if (selectedGrupo.id) {
+          <div class="row my-3">
+            <div class="col-8">
+              <div class="h4">{{ selectedGrupo.name | titlecase }}</div>
+              <p>Estudiantes del grupo</p>
+            </div>
+            <div class="col-4 text-end">
+              <button (click)="addEstudianteGrupo()" class="btn btn-outline-primary btn-sm">
+                Añadir Estudiante
+              </button>
+            </div>
+          </div>
+
+          <!-- Lista de estudiantes -->
+          @if (EstudiantesPorGrupo$ | async; as estudiantesInfo) {
+            <ul class="list-group list-group-flush mt-3">
+              @for (estudiante of estudiantesInfo.student; track $index) {
+                <li class="list-group-item d-flex justify-content-between align-items-center border-bottom">
+                  <div>
+                    <strong>{{ estudiante.id }} -- {{ estudiante.name | titlecase }}</strong>
+                  </div>
+                  <button class="btn btn-outline-danger btn-sm" (click)="eliminarEstudianteDelGrupo(estudiante)">
+                    Eliminar del grupo
+                  </button>
+                </li>
+              } @empty {
+                <li class="list-group-item text-center">No hay estudiantes en este grupo.</li>
+              }
+            </ul>
+          } @else {
+            <div class="d-flex align-items-center">
+              <strong>Cargando estudiantes...</strong>
+              <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+            </div>
+          }
+        } @else {
+          <div class="h4 text-center">Seleccione un grupo</div>
+        }
+      </div>
+    } @else if(error) {
+      <app-error-servidor></app-error-servidor>
+    } @else {
+      <div class="d-flex align-items-center mt-3">
+        <strong>Cargando grupos...</strong>
+        <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+      </div>
+    }
+  </div>
+</div>

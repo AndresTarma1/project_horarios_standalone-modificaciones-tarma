@@ -1,0 +1,69 @@
+<div class="container mt-4">
+  <h2 class="text-center text-uppercase text-secondary">Horario De Clases</h2>
+  <div class="table-container">
+    <table class="table  table-bordered schedule-table">
+      <thead>
+        <tr>
+          <th>Hora</th>
+          <ng-container *ngFor="let dia of dias">
+            <th class="time-block">{{ dia | titlecase }}</th>
+          </ng-container>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let hora of horas; let i = index;">
+          <tr>
+            <td class="text-hora">{{ hora }} -- {{ horasFinal[i+1] }}</td>
+            <ng-container *ngFor="let dia of dias">
+              <ng-container *ngIf="horarioTransformado[dia][i] as clase">
+                <ng-container *ngIf="!clase.covered">
+                  <td 
+                    [rowSpan]="clase.rowspan || 1"
+                    class="text-center text-muted align-content-center"
+                    >
+                    <div
+                    class="text-asignatura cursor-pointer"
+                    [popoverTitle]="title"
+                    [autoClose]="'outside'"
+                    [ngbPopover]="body"
+                    >{{ clase.name }}</div>
+                    
+                    <ng-template #title>Informacion de la clase</ng-template>
+                    <ng-template #body>
+                      @if (teacher) {
+                        <div class="popover-content p-2">
+                          <div class="mb-2">
+                            <span class="fw-bold">Clase:</span><br>
+                            <span class="text-secondary">{{ clase.name }}</span>
+                          </div>
+                          <div>
+                            <span class="fw-bold">Grupo:</span><br>
+                            <span class="text-secondary">{{ clase.nameGroup }}</span>
+                          </div>
+                        </div>
+                      }@else {
+                        <div class="popover-content p-2">
+                          <div class="mb-2">
+                            <span class="fw-bold">Clase:</span><br>
+                            <span class="text-secondary">{{ clase.name }}</span>
+                          </div>
+                          <div>
+                            <span class="fw-bold">Profesor:</span><br>
+                            <span class="text-secondary">{{ clase.nameTeacher }}</span>
+                          </div>
+                        </div>
+                      }
+                    </ng-template>                    
+                  </td>
+                </ng-container>
+              </ng-container>
+              <ng-container *ngIf="!horarioTransformado[dia][i]">
+                <td></td>
+              </ng-container>
+            </ng-container>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+</div>

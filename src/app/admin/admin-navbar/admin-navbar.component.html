@@ -1,0 +1,78 @@
+<div class="wrapper">
+  <aside id="sidebar" class="rounded-end" [class.expand]="isExpanded">
+      <div class="d-flex">
+          <button class="toggle-btn" type="button" (click)="toggleSidebar()">
+              <i class="bi bi-list"></i>
+          </button>
+          <div class="sidebar-logo">
+              <a href="#">ADMIN</a>
+          </div>
+      </div>
+      <ul class="sidebar-nav">
+          <li class="sidebar-item">
+              <a routerLink="profile" class="sidebar-link">
+                  <i class="bi bi-person-circle"></i>
+                  <span>Perfil</span>
+              </a>
+          </li>
+          <li class="sidebar-item">
+              <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                  data-bs-target="#auth" aria-expanded="false" aria-controls="auth">
+                  <i class="bi bi-backpack2-fill"></i>
+                  <span>Estudiantes</span>
+              </a>
+              <ul id="auth" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                  <li class="sidebar-item">
+                      <a routerLink="student/index" class="sidebar-link">Lista</a>
+                  </li>
+                  <li class="sidebar-item">
+                      <a routerLink="student/create" class="sidebar-link">Añadir</a>
+                  </li>
+              </ul>
+          </li>
+
+          <li class="sidebar-item">
+              <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                  data-bs-target="#profesor" aria-expanded="false" aria-controls="auth">
+                  <i class="bi bi-person-raised-hand"></i>
+                  <span>Profesores</span>
+              </a>
+              <ul id="profesor" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                  <li class="sidebar-item">
+                      <a routerLink="teacher/index" class="sidebar-link">Lista</a>
+                  </li>
+                  <li class="sidebar-item">
+                      <a routerLink="teacher/create" class="sidebar-link">Añadir</a>
+                  </li>
+              </ul>
+          </li>
+
+          <li class="sidebar-item">
+              <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                  data-bs-target="#coordinador" aria-expanded="false" aria-controls="auth">
+                  <i class="bi bi-person-vcard-fill"></i>
+                  <span>Coordinadores</span>
+              </a>
+              <ul  id="coordinador" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                  <li class="sidebar-item">
+                      <a routerLink="coordinator/index" class="sidebar-link">Lista</a>
+                  </li>
+                  <li class="sidebar-item">
+                      <a routerLink="coordinator/create" class="sidebar-link">Añadir</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
+      <div class="sidebar-footer">
+          <a (click)="logout()" style="cursor: pointer;" class="sidebar-link">
+              <i class="bi bi-box-arrow-left"></i>
+              <span>Logout</span>
+          </a>
+      </div>
+  </aside>
+  <div class="main p-3">
+      <div class="text-center">
+        <router-outlet></router-outlet>
+      </div>
+  </div>
+</div>

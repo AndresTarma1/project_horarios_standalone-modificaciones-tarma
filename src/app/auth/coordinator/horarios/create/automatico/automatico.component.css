@@ -1,0 +1,22 @@
+fieldset{
+  border: 2px solid black !important;
+}
+
+@media (max-width: 992px) {
+  .pasos{
+    display: none;
+  }
+}
+
+.swal-content-with-line-breaks {
+  white-space: pre-wrap;  /* Habilita saltos de línea */
+}
+
+.text-success {
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+  color: green;
+}
+*{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}

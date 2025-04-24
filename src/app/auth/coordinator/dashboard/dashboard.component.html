@@ -1,0 +1,88 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Main content -->
+    <main class="col">
+      <div class="align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2 text-center">Dashboard del Coordinador</h1>
+      </div>
+
+      <!-- Stats -->
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-4">
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Estudiantes Activos</h5>
+              <p class="card-text display-6">{{ estudiantes_lenght }}</p>
+              <small class="text-muted">Estudiantes creados</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Profesores Activos</h5>
+              <p class="card-text display-6">{{ profesores_lenght }}</p>
+              <small class="text-muted">Profesores creados</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Grupos Disponibles</h5>
+              <p class="card-text display-6">{{ grupos_lenght }}</p>
+              <small class="text-muted">Grupos Creados</small>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Mensajes Pendientes</h5>
+              <p class="card-text display-6">23</p>
+              <small class="text-muted">5 nuevos hoy</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tasks and Calendar -->
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              Tareas Pendientes
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let task of tasks">
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" [id]="'task' + task.id">
+                    <label class="form-check-label text-muted" [for]="'task' + task.id">
+                      {{ task.description }}
+                    </label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              Calendario de Eventos
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let event of events">
+                  <span>{{ event.date }}</span>
+                  <span>{{ event.description }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

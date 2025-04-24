@@ -1,0 +1,29 @@
+*{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}
+
+/* Estilo para las pestañas activas */
+.nav-link.active-tab {
+  background: #0056b3;
+  color: white !important;
+  font-weight: bold;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+/* Estilo para pestañas inactivas */
+.nav-link.inactive-tab {
+  transition: all 0.3s ease;
+  border: none;
+}
+
+/* Efecto hover para pestañas */
+.nav-link:hover {
+  background-color: #e9ecef;
+  color: #0056b3 !important;
+}
+
+/* Contenedor del contenido de las pestañas */
+div[ngbNavOutlet] {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}

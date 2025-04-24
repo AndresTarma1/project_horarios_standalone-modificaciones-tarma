@@ -1,0 +1,45 @@
+<div class="container_">
+  <div class="sidebar" [ngClass]="{ active: isSidebarActive }" id="sidebarMenu">
+    <div class="sidebar-header">
+      <img class="mx-auto" src="/assets/placeholders/image.png" alt="Profile Image" />
+      <h5>{{ profesor.name }}</h5>
+      <p>Profesor</p>
+    </div>
+    <ul class="nav flex-column p-3">
+      <li class="nav-item">
+        <a routerLink="dashboard" class="nav-link">
+          <i class="bi bi-house-door-fill"></i>
+          Dashboard
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="perfil" class="nav-link">
+          <i class="bi bi-person-circle"></i>
+          Perfil
+        </a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="horario" class="nav-link">
+          <i class="bi bi-calendar-check-fill"></i>
+          Horario
+        </a>
+      </li>
+      <li class="nav-item logout-item">
+        <a style="cursor: pointer;" (click)="logout()" class="nav-link">
+          <i class="bi bi-box-arrow-right"></i>
+          Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+  <button
+    [class.menu-inactivo]="!isSidebarActive"
+    class="toggle-btn"
+    (click)="toggleSidebar()"
+  >
+    ☰
+  </button>
+    <div class="section-main bg-body-secondary overflow-auto text-center" [class.margin-content]="isSidebarActive">
+      <router-outlet></router-outlet>
+    </div>
+</div>

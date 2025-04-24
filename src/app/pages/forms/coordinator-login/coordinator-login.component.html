@@ -1,0 +1,17 @@
+
+<div class="login-container">
+  <div class="login-box p-4">
+      <h2 class="text-center">Coordinador Login</h2>
+      <form (ngSubmit)="loginCoordinador()" [formGroup]="coordinatorLogin" >
+          <div class="mb-3 input-group">
+              <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+              <input formControlName="email" type="email" class="form-control" id="email" placeholder="Coordinador Email">
+          </div>
+          <div class="mb-3 input-group">
+              <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+              <input formControlName="password" type="password" class="form-control" id="password" placeholder="Coordinador Password">
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+      </form>
+  </div>
+</div>

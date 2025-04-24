@@ -1,0 +1,68 @@
+<div class="row g-3 mb-4 align-items-end">
+  <div class="col-md-4">
+    <label for="campo" class="form-label fw-bold">Filtrar por:</label>
+    <select (change)="filtro($event)" id="campo" class="form-select">
+      @for (opcion of columns; track $index) {
+      <option [value]="opcion.field">{{ opcion.header }}</option>
+      }
+    </select>
+  </div>
+  <div class="col-md-5">
+    <label for="valorFiltro" class="form-label fw-bold"
+      >Valor de búsqueda:</label
+    >
+    <input
+      (keyup)="buscarPorFiltro()"
+      [(ngModel)]="filtroInput"
+      id="valorFiltro"
+      type="text"
+      class="form-control"
+      placeholder="Ingrese el valor de búsqueda"
+    />
+  </div>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        @for (col of columns; track $index) {
+        <th>{{ col.header }}</th>
+        }
+        <th colspan="2">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (user of datos | paginate: {itemsPerPage: 5, currentPage: p,
+      totalItems: total()} ; track user.id) {
+      <tr>
+        @for (col of columns; track $index) {
+        <td>
+          {{ user[col.field] }}
+        </td>
+        }
+        <td>
+          <a><i (click)="editModal(user)" class="bi bi-pencil accion"></i></a>
+        </td>
+        <td>
+          <a><i (click)="deleteUser(user)" class="bi bi-trash accion"></i></a>
+        </td>
+      </tr>
+
+      } @empty {
+      <tr>
+        <td [attr.colspan]="columns.length + 1">No hay datos disponibles</td>
+      </tr>
+      }
+    </tbody>
+
+    <tfoot>
+      <td [attr.colspan]="columns.length + 1">
+        <pagination-controls
+          class="text-center"
+          nextLabel="Siguiente"
+          previousLabel="Anterior"
+          (pageChange)="p = $event"
+        ></pagination-controls>
+      </td>
+    </tfoot>
+  </table>
+</div>
