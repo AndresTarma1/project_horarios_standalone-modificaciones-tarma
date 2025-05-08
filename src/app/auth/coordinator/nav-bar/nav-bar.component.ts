@@ -25,8 +25,34 @@ export class NavBarComponent implements OnInit{
 
   }
 
+  isHorarioOpen = false;
+  isCarrerasOpen = false;
+  isAsignaturasOpen = false;
+
   toggleSidebar() {
     this.isSidebarActive = !this.isSidebarActive;
+  }
+
+  toggleSubmenu(submenu: string) {
+    switch (submenu) {
+      case 'horario':
+        this.isHorarioOpen = !this.isHorarioOpen;
+        this.isCarrerasOpen = false;
+        this.isAsignaturasOpen = false;
+        break;
+      case 'carreras':
+        this.isCarrerasOpen = !this.isCarrerasOpen;
+        this.isHorarioOpen = false;
+        this.isAsignaturasOpen = false;
+        break;
+      case 'asignaturas':
+        this.isAsignaturasOpen = !this.isAsignaturasOpen;
+        this.isHorarioOpen = false;
+        this.isCarrerasOpen = false;
+        break;
+      default:
+        break;
+    }
   }
 
 

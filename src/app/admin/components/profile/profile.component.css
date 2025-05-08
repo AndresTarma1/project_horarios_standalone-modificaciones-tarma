@@ -12,3 +12,8 @@ h2 {
 .bg-light {
   background-color: #f8f9fa !important;
 }
+
+
+.redondito{
+  border-radius: 20px;
+}

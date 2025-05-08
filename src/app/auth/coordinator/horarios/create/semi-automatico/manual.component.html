@@ -79,7 +79,7 @@
               @if (profesores$ | async; as profesoresInfo) {
                 <option value="" selected>Maestros</option>
                 @for (profesor of profesoresInfo.teachers; track $index) {
-                  <option [value]="profesor.id">{{ profesor.name | titlecase }} -- {{ profesor.id }}</option>
+                  <option [value]="profesor.id">{{ profesor.name | titlecase }} -- ({{ profesor.id }})</option>
                 }@empty {
                   <option value="" selected disabled>No hay Maestros Disponibles</option>
                 }
@@ -98,7 +98,7 @@
         <fieldset class="mx-auto border rounded-3 p-4 bg-light shadow-sm">
           <legend class="float-none w-auto px-3">Creación de horarios</legend>
           <h3 class="text-center text-primary">Pasos</h3>
-          <hr class="border border-2 opacity-75 my-3" />
+          <hr class="border-2 opacity-75 my-3" />
           <ol class="text-secondary">
             <li>Seleccione la carrera.</li>
             <li>Seleccione la carga académica.</li>

@@ -1,57 +1,58 @@
 <div class="container-fluid">
   <div class="row">
-    <!-- Main content -->
     <main class="col">
-      <div class="align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2 text-center">Dashboard</h1>
+      <div style="border-radius: 20px;" class="align-items-center pt-3 pb-2 mb-3 border-bottom shadow-sm">
+        <h1 class="h2 text-center"><i class="bi bi-speedometer2 me-2"></i> Dashboard</h1>
       </div>
 
-      <!-- Stats -->
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-4">
         <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Estudiantes Activos</h5>
-              <p class="card-text display-6">{{ estudiantes_lenght }}</p>
-              <small class="text-muted">Estudiantes creados</small>
+          <div style="background-color: #D6EAF8;" class="card hover-cards redondito">
+            <div class="card-body d-flex flex-column align-items-center justify-content-center">
+              <i class="bi bi-people fs-3 mb-2"></i>
+              <h5 class="card-title mb-0 text-center">Estudiantes Activos</h5>
+              <p class="card-text display-6 mb-0 text-center">{{ estudiantes_lenght }}</p>
+              <small class="text-muted text-center">Estudiantes creados</small>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Profesores Activos</h5>
-              <p class="card-text display-6">{{ profesores_lenght }}</p>
-              <small class="text-muted">Profesores creados</small>
+          <div style="background-color: #F9E79F;" class="card hover-cards redondito">
+            <div class="card-body d-flex flex-column align-items-center justify-content-center">
+              <i class="bi bi-person-fill fs-3 mb-2"></i>
+              <h5 class="card-title mb-0 text-center">Profesores Activos</h5>
+              <p class="card-text display-6 mb-0 text-center">{{ profesores_lenght }}</p>
+              <small class="text-muted text-center">Profesores creados</small>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Grupos Disponibles</h5>
-              <p class="card-text display-6">{{ grupos_lenght }}</p>
-              <small class="text-muted">Grupos Creados</small>
+          <div style="background-color: #D5F5E3;" class="card hover-cards redondito">
+            <div class="card-body d-flex flex-column align-items-center justify-content-center">
+              <i class="bi bi-mortarboard-fill fs-3 mb-2"></i>
+              <h5 class="card-title mb-0 text-center">Grupos Disponibles</h5>
+              <p class="card-text display-6 mb-0 text-center">{{ grupos_lenght }}</p>
+              <small class="text-muted text-center">Grupos Creados</small>
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Mensajes Pendientes</h5>
-              <p class="card-text display-6">23</p>
-              <small class="text-muted">5 nuevos hoy</small>
+          <div style="background-color: #F8EDE8;" class="card hover-cards redondito">
+            <div class="card-body d-flex flex-column align-items-center justify-content-center">
+              <i class="bi bi-envelope-fill fs-3 mb-2"></i>
+              <h5 class="card-title mb-0 text-center">Mensajes Pendientes</h5>
+              <p class="card-text display-6 mb-0 text-center">23</p>
+              <small class="text-muted text-center">5 nuevos hoy</small>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Tasks and Calendar -->
       <div class="row mb-4">
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header">
-              Tareas Pendientes
+        <div class="col-md-6 md:mb-4">
+          <div class="card shadow-sm redondito">
+            <div class="card-header mx-4 ">
+              <i class="bi bi-list-task me-2"></i> Tareas Pendientes
             </div>
             <div class="card-body">
               <ul class="list-group list-group-flush">
@@ -68,9 +69,9 @@
           </div>
         </div>
         <div class="col-md-6">
-          <div class="card">
-            <div class="card-header">
-              Calendario de Eventos
+          <div class="card shadow-sm redondito">
+            <div class="card-header mx-4">
+              <i class="bi bi-calendar-event-fill me-2"></i> Calendario de Eventos
             </div>
             <div class="card-body">
               <ul class="list-group list-group-flush">

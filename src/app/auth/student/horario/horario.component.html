@@ -3,7 +3,7 @@
         <main class="col-12 px-md-4">
             <div class="text-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">Horario del Estudiante</h1>
-                <p class="text-muted">Mi grupo {{ grupo }}</p>
+                <p class="text-muted">Mi grupo: {{ grupo }}</p>
             </div>
             @if (horario$| async; as horarioInfo) {
               @if (horarioInfo.horario.length > 0) {

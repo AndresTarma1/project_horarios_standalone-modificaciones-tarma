@@ -3,7 +3,7 @@ import Swal from 'sweetalert2';
 import { CoordinadorService } from '../../../core/services/coordinador.service';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { NgbProgressbarModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -38,6 +38,7 @@ export class AddSubjectTeacherComponent {
 
   obtenerAsignaturas(): void{
     let id_teacher = this.asignacionMaterias.controls['id_teacher'].value;
+
     if(id_teacher){
       this.asignaturas$ = this.coordinadorService.getAsignaturas();
       this.asignaturasMaestro$ = this.coordinadorService.getAsignaturasDeProfesor(id_teacher);

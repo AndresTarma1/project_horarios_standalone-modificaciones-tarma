@@ -16,7 +16,7 @@ export class CreateComponent {
     name: ['', Validators.required],
     last_name: ['', Validators.required],
     phone: ['', Validators.required],
-    identify: ['', Validators.required],
+    identify: ['', Validators.required, Validators.minLength(7)],
     departament: ['', Validators.required],
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]

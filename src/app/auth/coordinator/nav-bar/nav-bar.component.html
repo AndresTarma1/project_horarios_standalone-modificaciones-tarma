@@ -20,42 +20,42 @@
       </li>
 
       <li class="nav-item">
-        <a href="#horarioSubmenu" class="nav-link" data-bs-toggle="collapse">
+        <a href="javascript:void(0)" class="nav-link" [attr.aria-expanded]="isHorarioOpen" (click)="toggleSubmenu('horario')">
           <i class="bi bi-calendar-check-fill"></i>
           Horario
         </a>
-        <div class="collapse submenu" id="horarioSubmenu">
-          <a routerLink="horario/create" class="nav-link"> Crear Horario </a>
-          <a routerLink="horario/index" class="nav-link"> Ver Horario </a>
+        <div class="collapse submenu" id="horarioSubmenu" [ngClass]="{ show: isHorarioOpen }">
+          <a routerLink="horario/create" class="nav-link ms-3"> Crear Horario </a>
+          <a routerLink="horario/index" class="nav-link ms-3"> Ver Horario </a>
         </div>
       </li>
 
       <li class="nav-item">
         <a routerLink="groups" class="nav-link">
-          <i class="bi bi-person-circle"></i>
+          <i class="bi bi-people-fill"></i>
           Grupos
         </a>
       </li>
 
       <li class="nav-item">
-        <a href="#cargasSubmenu" class="nav-link" data-bs-toggle="collapse">
+        <a href="javascript:void(0)" class="nav-link" [attr.aria-expanded]="isCarrerasOpen" (click)="toggleSubmenu('carreras')">
           <i class="bi bi-folder-fill"></i>
           Carreras
         </a>
-        <div class="collapse submenu" id="cargasSubmenu">
-          <a routerLink="carreras/create" class="nav-link">Crear Carreras</a>
-          <a routerLink="carreras/index" class="nav-link">Ver Carreras</a>
+        <div class="collapse submenu" id="cargasSubmenu" [ngClass]="{ show: isCarrerasOpen }">
+          <a routerLink="carreras/create" class="nav-link ms-3">Crear Carreras</a>
+          <a routerLink="carreras/index" class="nav-link ms-3">Ver Carreras</a>
         </div>
       </li>
 
       <li class="nav-item">
-        <a href="#asignaturasSubmenu" class="nav-link" data-bs-toggle="collapse">
-          <i class="bi bi-calendar-check-fill"></i>
+        <a href="javascript:void(0)" class="nav-link" [attr.aria-expanded]="isAsignaturasOpen" (click)="toggleSubmenu('asignaturas')">
+          <i class="bi bi-book-fill"></i>
           Asignaturas
         </a>
-        <div class="collapse submenu" id="asignaturasSubmenu">
-          <a routerLink="subjects" class="nav-link">Ver Asignaturas</a>
-          <a routerLink="subject/teacher" class="nav-link">Control Profesores</a>
+        <div class="collapse submenu" id="asignaturasSubmenu" [ngClass]="{ show: isAsignaturasOpen }">
+          <a routerLink="subjects" class="nav-link ms-3">Ver Asignaturas</a>
+          <a routerLink="subject/teacher" class="nav-link ms-3">Control Profesores</a>
         </div>
       </li>
       <li class="nav-item logout-item">

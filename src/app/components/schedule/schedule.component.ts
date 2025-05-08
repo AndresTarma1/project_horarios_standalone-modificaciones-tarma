@@ -71,6 +71,7 @@ horasFinal = [
 horarioTransformado: any = {}; // Objeto que contendrá las clases organizadas por días y horas
 
 procesarHorario() {
+
   this.horarioTransformado = {}; // Reinicia el horario
 
   for (const dia of this.dias) {

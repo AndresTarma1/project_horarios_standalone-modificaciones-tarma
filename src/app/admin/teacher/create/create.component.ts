@@ -21,7 +21,7 @@ export class CreateComponent {
     this.teacherForm = this.fb.group({
       name: ['', [Validators.required]],
       last_name: ['', [Validators.required]],
-      identify: ['', [Validators.required]],
+      identify: ['', [Validators.required, Validators.minLength(7)]],
       email: [{value: '', disabled: true}, [Validators.required, Validators.email]],
       password: [{value: '', disabled: true}, [Validators.required]],
       phone: ['', [Validators.required]],

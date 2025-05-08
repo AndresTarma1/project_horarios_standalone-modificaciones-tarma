@@ -17,7 +17,7 @@ export class CreateComponent implements OnInit {
     last_name: ['', [Validators.required]],
     email: [{value: '', disabled: true},[Validators.required, Validators.email]],
     phone: ['', [Validators.required]],
-    identify : ['', [Validators.required]]
+    identify : ['', [Validators.required, Validators.minLength(7)]]
   });
 
   ngOnInit(): void {

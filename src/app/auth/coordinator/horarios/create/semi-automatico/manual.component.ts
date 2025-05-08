@@ -47,7 +47,6 @@ export class SemiAutomaticoComponent {
     let id_carrera =this.horarioForm.controls['id_career'].value;
     
     this.horarioForm.patchValue({
-      id_career: '',
       id_academic_load: '',
       id_group: '',
       id_subject: '',
@@ -67,7 +66,6 @@ export class SemiAutomaticoComponent {
     let id_carga_academica = this.horarioForm.controls['id_academic_load'].value;
     
     this.horarioForm.patchValue({
-      id_academic_load: '',
       id_group: '',
       id_subject: '',
       id_teacher: '',

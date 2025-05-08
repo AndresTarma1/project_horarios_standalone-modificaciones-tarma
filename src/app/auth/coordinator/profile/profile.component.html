@@ -1,22 +1,21 @@
 <div class="container h-100 d-flex justify-content-center align-items-center">
   <div class="row justify-content-center w-100">
-    <div class="col-12 col-md-8">
-      <div class="card">
+    <div class="col-12 col-md-9">
+      <div class="card redondito shadow-lg">
         <div class="mx-4 mt-4 d-flex justify-content-between align-items-center">
-          <h5>User Profile</h5>
-          <button (click)="toggleEdit()" class="btn btn-outline-secondary">
+          <h5 class="ms-2">Perfil</h5>
+          <button (click)="toggleEdit()" class="btn btn-outline-secondary shadow-sm">
             <i class="bi bi-pencil"></i>
           </button>
         </div>
 
         <div class="card-body">
           <div class="d-flex align-items-center">
-            <img src="/assets/placeholders/image.png" alt="User Avatar" class="img-fluid rounded-circle mr-3" style="max-width: 80px; height: auto;">
-            <div class="ms-3 mt-3 w-100">
-              <!-- Formulario en modo edición -->
+            <img src="/assets/placeholders/image.png" alt="User Avatar" class="img-fluid rounded-circle mr-3 shadow-sm" style="max-width: 80px; height: auto;">
+            <div class="ms-4 mt-3 w-100">
               <div *ngIf="isEditing">
-                <form  [formGroup]="formulario">
-                  <div class="row">
+                <form [formGroup]="formulario">
+                  <div class="row mb-3">
                     <div class="col-md-6">
                       <label for="name" class="form-label">Nombre</label>
                       <input id="name" formControlName="name" type="text" class="form-control" aria-label="Nombre del coordinador">
@@ -26,44 +25,56 @@
                       <input id="last_name" formControlName="last_name" type="text" class="form-control" aria-label="Apellido del coordinador">
                     </div>
                   </div>
-                  <div class="my-2">
+                  <div class="mb-3">
                     <label for="departament" class="form-label">Departamento</label>
                     <input id="departament" formControlName="departament" type="text" class="form-control" aria-label="Departamento del coordinador">
                   </div>
-                  <div class="my-2">
+                  <div class="mb-3">
                     <label for="email" class="form-label">Correo</label>
                     <input id="email" type="email" formControlName="email" class="form-control" aria-label="Correo del coordinador">
                   </div>
                 </form>
-                <!-- Modo de visualización normal -->
               </div>
               @if (!isEditing) {
-                <h5 class="mb-0">{{ coordinador.name }} {{ coordinador.last_name }}</h5>
-                <p class="text-muted">Coordinador</p>
+              <h5 class="mb-0">
+                <span class="ms-1">{{ coordinador.name }} {{ coordinador.last_name }}</span>
+              </h5>
+              <p class="text-muted ms-1">Coordinador</p>
               }
             </div>
           </div>
-          <hr>
-
-          <div>
-            <div class="my-2">
-              <p><strong>Identificación:</strong></p>
-              <p class="text-muted">{{ coordinador.identify }}</p>
+          <hr class="my-4">
+          <h5 class="ms-2" style="color: black; ">Información Básica</h5>
+          <div class="ms-2">
+            <div class="my-3 row align-items-center">
+              <div class="col-4">
+                <p class="mb-0"><strong>Identificación:</strong></p>
+              </div>
+              <div class="col-8">
+                <p class="ms-4 mb-0" style="color: #0078D7;">{{ coordinador.identify }}</p>
+              </div>
             </div>
-            <div class="my-2">
-              <p><strong>Departamento:</strong></p>
-              <p class="text-muted">{{ coordinador.departament }}</p>
+            <div class="my-3 row align-items-center">
+              <div class="col-4">
+                <p class="mb-0"><strong>Departamento:</strong></p>
+              </div>
+              <div class="col-8">
+                <p class="ms-4 text-muted mb-0">{{ coordinador.departament }}</p>
+              </div>
             </div>
-            <div class="my-2">
-              <p><strong>Correo:</strong></p>
-              <p class="text-muted">{{ coordinador.email }}</p>
+            <div class="my-3 row align-items-center">
+              <div class="col-4">
+                <p class="mb-0"><strong>Correo:</strong></p>
+              </div>
+              <div class="col-8">
+                <p class="ms-4 mb-0" style="color: #0078D7;">{{ coordinador.email }}</p>
+              </div>
             </div>
           </div>
 
-          <!-- Botones de Guardar y Cancelar cuando está en modo edición -->
           <div *ngIf="isEditing" class="d-flex justify-content-end mt-4">
-            <button type="button" (click)="submitEdit()" class="btn btn-outline-primary me-2">Guardar Cambios</button>
-            <button type="button" (click)="cancelEdit()" class="btn btn-outline-secondary">Cancelar</button>
+            <button type="button" (click)="submitEdit()" class="btn btn-outline-primary me-2 shadow-sm">Guardar Cambios</button>
+            <button type="button" (click)="cancelEdit()" class="btn btn-outline-secondary shadow-sm">Cancelar</button>
           </div>
         </div>
       </div>

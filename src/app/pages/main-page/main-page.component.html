@@ -1,17 +1,17 @@
 <body class="bg-gray-100 text-gray-800 transition-colors duration-300">
     <!-- Navbar mejorado -->
-    <nav class="bg-gradient-to-r from-[#99D1F5] to-[#47F5C6] shadow-lg sticky top-0 z-50 transition-all duration-300 ease-in-out">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
-                <a class="text-2xl font-bold flex items-center">
-                  <p class="text-white text-uppercase text-4xl md:text-5xl font-bold tracking-widest mb-8">DAY</p>
-                </a>
+    <nav class="bg-[#00B7EBB3]  shadow-lg sticky top-0 z-50 transition-all duration-300 ease-in-out">
+      <div class="container-2xl px-4">
+        <div class="flex justify-between items-center py-3">
+            <a  class="text-2xl 2xl:ml-4 font-bold flex items-center">
+                <img src="main-page/DAY_v2.png" alt="Logo DAY" class="h-10 md:h-12">
+            </a>
                 <div class="hidden md:flex space-x-6 items-center">
-                    <a href="https://educacion-continua.libertadores.edu.co/" class="no-underline text-gray-700 hover:text-[#1E3A8A] transition duration-300">Formación Continua</a>
-                    <a href="https://www.ulibertadores.edu.co/admision/becas-y-beneficios/" class="no-underline text-gray-700 hover:text-[#1E3A8A] transition duration-300">Beneficios</a>
+                  <a href="https://educacion-continua.libertadores.edu.co/" class="no-underline font-semibold text-white transition duration-300 hover-blue-underline">Formación Continua</a>
+                  <a href="https://www.ulibertadores.edu.co/admision/becas-y-beneficios/" class="no-underline font-semibold text-white transition duration-300 hover-blue-underline">Beneficios</a>
                     <div class="relative group">
                         <button
-                          class="text-gray-700 hover:text-[#1E3A8A] transition duration-300 flex items-center"
+                          class="text-white font-semibold hover-blue-underline transition duration-300 flex items-center"
                           (click)="toggleDropdown()"
                         >
                           Iniciar Sesión
@@ -130,26 +130,26 @@
         <h2 class="text-4xl font-bold mb-8 text-[#1E3A8A] text-center">Sistema de Creación de Horarios</h2>
         <div class="bg-white rounded-lg shadow-xl p-8 hover:shadow-2xl transition duration-300">
             <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-                Bienvenido al sistema de creación de horarios de la Universidad Los Libertadores. 
+                Bienvenido al sistema de creación de horarios de Instituciones Academicas. 
                 Aquí podrás organizar y gestionar los horarios de clases de forma sencilla, eficiente y personalizada.
             </p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
-                <div class="text-center p-6 bg-gray-50 rounded-lg hover:bg-[#1E3A8A] hover:text-white transition duration-300 transform hover:scale-105">
-                    <i class="fas fa-calendar-alt text-5xl text-[#1E3A8A] mb-4 group-hover:text-white"></i>
-                    <h3 class="text-xl font-semibold mb-2">Planificación</h3>
-                    <p class="text-white-600 hover:text-white-200">Crea horarios detallados para cada grupo y asignatura.</p>
-                </div>
-                <div class="text-center p-6 bg-gray-50 rounded-lg  transition duration-300 transform hover:scale-105">
-                    <i class="fas fa-chalkboard-teacher text-5xl text-[#1E3A8A] mb-4 group-hover:text-white"></i>
-                    <h3 class="text-xl font-semibold mb-2">Asignación de Profesores</h3>
-                    <p class="text-white-600 hover:text-white-200">Asocia profesores a las clases según disponibilidad.</p>
-                </div>
-                <div class="text-center p-6 bg-gray-50 rounded-lg hover:bg-[#1E3A8A] hover:text-white transition duration-300 transform hover:scale-105">
-                    <i class="fas fa-clock text-5xl text-[#1E3A8A] mb-4 group-hover:text-white"></i>
-                    <h3 class="text-xl font-semibold mb-2">Gestión de Horarios</h3>
-                    <p class="text-white-600 hover:text-white-200">Visualiza y ajusta los horarios en tiempo real.</p>
-                </div>
-            </div>
+              <div class="text-center p-6 bg-gray-50 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-md">
+                  <i class="fas fa-calendar-alt text-5xl  mb-4"></i>
+                  <h3 class="text-xl font-semibold text-[#1E3A8A] mb-2">Planificación</h3>
+                  <p class="text-gray-600">Crea horarios detallados para cada grupo y asignatura.</p>
+              </div>
+              <div class="text-center p-6 bg-gray-50 rounded-lg transition duration-303 transform hover:scale-105 hover:shadow-md">
+                  <i class="fas fa-chalkboard-teacher text-5xl  mb-4"></i>
+                  <h3 class="text-xl font-semibold text-[#1E3A8A] mb-2">Asignación de Profesores</h3>
+                  <p class="text-gray-600">Asocia profesores a las clases según disponibilidad.</p>
+              </div>
+              <div class="text-center p-6 bg-gray-50 rounded-lg transition duration-300 transform hover:scale-105 hover:shadow-md">
+                  <i class="fas fa-clock text-5xl  mb-4"></i>
+                  <h3 class="text-xl font-semibold text-[#1E3A8A] mb-2">Gestión de Horarios</h3>
+                  <p class="text-gray-600">Visualiza y ajusta los horarios en tiempo real.</p>
+              </div>
+          </div>
         </div>
     </div>
     
@@ -160,18 +160,18 @@
             <div class="bg-white rounded-lg shadow-lg p-6 hover-grow">
                 <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Horario del Estudiante</h3>
                 <p class="text-gray-600 mb-4">Consulta el horario completo del estudiante, incluyendo asignaturas y horarios de clase.</p>
-                <a href="login/student" class="text-[#1E3A8A] hover:text-[#F97316] transition duration-300">Ver horario</a>
+                <a href="login/student" class="text-[#1E3A8A] no-underline transition duration-300">Ver horario</a>
             </div>
             <div class="bg-white rounded-lg shadow-lg p-6 hover-grow">
               <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Crear Horario</h3>
               <p class="text-gray-600 mb-4">El coordinador puede crear y gestionar horarios para clases y actividades académicas.</p>
-              <a href="login/coordinator" class="text-[#1E3A8A] hover:text-[#F97316] transition duration-300">Crear horario</a>
+              <a href="login/coordinator" class="text-[#1E3A8A] no-underline transition duration-300">Crear horario</a>
             </div>
           
             <div class="bg-white rounded-lg shadow-lg p-6 hover-grow">
                 <h3 class="text-xl font-semibold mb-2 text-[#1E3A8A]">Horario del Profesor</h3>
                 <p class="text-gray-600 mb-4">Revisa el horario del profesor para planificar clases y otras actividades docentes.</p>
-                <a href="login/teacher" class="text-[#1E3A8A] hover:text-[#F97316] transition duration-300">Ver horario</a>
+                <a href="login/teacher" class="text-[#1E3A8A] no-underline transition duration-300">Ver horario</a>
             </div>
         </div>
       </div>
@@ -206,7 +206,7 @@
         </div>
         <div class="bg-[#47B2F5] py-4">
             <div class="container mx-auto px-4 text-center">
-                <p>&copy; 2024 Sistema de Horarios - Universidad Los Libertadores. Todos los derechos reservados a andres tarras.</p>
+                <p>&copy; 2024 Sistema de Horarios - Universidad Los Libertadores. Todos los derechos reservados XeXe.</p>
             </div>
         </div>
     </footer>
