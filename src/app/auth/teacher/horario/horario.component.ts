@@ -30,6 +30,7 @@ export class HorarioComponent {
   buscarHorario(){
       this.horario$ = this.teacherService.getHorario(this.profesor.id).pipe(
         map((res: any) => {
+          console.log(res);
           return res;
         })
       );
